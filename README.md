@@ -9,4 +9,6 @@ npx serve
 # Site so framework css
 https://semantic-ui.com/introduction/getting-started.html
 
+# Bizu HttpClientJsonModule 
+faz chamadas sem bloqueio de cors
 

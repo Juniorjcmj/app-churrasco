@@ -16,10 +16,12 @@ import { ServicosDiversosModule } from './modules/servicos-diversos/servicos-div
 import { TipoAcompanhamentoModule } from './modules/tipo-acompanhamento/tipo-acompanhamento.module';
 import { TipoCorteModule } from './modules/tipo-corte/tipo-corte.module';
 import { UnidadeModule } from './modules/unidade/unidade.module';
+import { MenuComponent } from './share/menu/menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
