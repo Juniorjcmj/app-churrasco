@@ -1,4 +1,7 @@
-<div class="ui two item menu">
-  <a  class="item" routerLinkActive="active" routerLink="/home">Home</a>
-  <a  class="item"routerLinkActive="active" routerLink="/orcamento">Orçamento</a>
-</div>
+<p-menubar [model] ="items">
+  <ng-template pTemplate="start">
+  </ng-template>
+  <ng-template pTemplate="end">
+    <i  class="pi pi-fw pi-power-off" style="font-size: 1rem"></i>
+  </ng-template>
+</p-menubar>

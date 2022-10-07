@@ -17,11 +17,14 @@ import { TipoAcompanhamentoModule } from './modules/tipo-acompanhamento/tipo-aco
 import { TipoCorteModule } from './modules/tipo-corte/tipo-corte.module';
 import { UnidadeModule } from './modules/unidade/unidade.module';
 import { MenuComponent } from './share/menu/menu.component';
+import { PrimeNGModule } from './share/primeng.module';
+import {MenubarModule} from 'primeng/menubar';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent
+
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,9 @@ import { MenuComponent } from './share/menu/menu.component';
     ServicosDiversosModule,
     TipoAcompanhamentoModule,
     TipoCorteModule,
-    UnidadeModule
+    UnidadeModule,
+    PrimeNGModule,
+    MenubarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
