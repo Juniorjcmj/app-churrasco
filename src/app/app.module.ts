@@ -19,6 +19,9 @@ import { UnidadeModule } from './modules/unidade/unidade.module';
 import { MenuComponent } from './share/menu/menu.component';
 import { PrimeNGModule } from './share/primeng.module';
 import {MenubarModule} from 'primeng/menubar';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import {MenubarModule} from 'primeng/menubar';
     TipoCorteModule,
     UnidadeModule,
     PrimeNGModule,
-    MenubarModule
+    MenubarModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

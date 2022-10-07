@@ -6,7 +6,7 @@ import { MenuItem } from 'primeng/api/menuitem';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent  {
 
   items: MenuItem[];
 
@@ -107,8 +107,5 @@ export class MenuComponent implements OnInit {
 
     ];
 }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
 }

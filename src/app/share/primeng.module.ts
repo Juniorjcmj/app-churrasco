@@ -3,9 +3,15 @@ import { CommonModule } from '@angular/common';
 import {ButtonModule} from 'primeng/button'
 import {MenubarModule} from 'primeng/menubar';
 import {CardModule} from 'primeng/card';
-
-
-
+import {ToastModule} from 'primeng/toast';
+import {ToolbarModule} from 'primeng/toolbar';
+import {FileUploadModule} from 'primeng/fileupload';
+import {TableModule} from 'primeng/table'
+import {DialogModule} from 'primeng/dialog';
+import {DropdownModule} from 'primeng/dropdown';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {InputNumberModule} from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
 
@@ -18,7 +24,17 @@ import {CardModule} from 'primeng/card';
   exports:[
     ButtonModule,
     MenubarModule,
-    CardModule
+    CardModule,
+    ToastModule,
+    ToolbarModule,
+    FileUploadModule,
+    TableModule,
+    DialogModule,
+    DropdownModule,
+    RadioButtonModule,
+    InputNumberModule,
+    ConfirmDialogModule
+
   ]
 })
 export class PrimeNGModule { }
