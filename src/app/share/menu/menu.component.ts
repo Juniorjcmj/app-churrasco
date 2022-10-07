@@ -12,26 +12,33 @@ export class MenuComponent implements OnInit {
 
   constructor() {
     this.items = [
+      {
+        label:'Home',
+        icon:'pi pi-fw pi-home',
+        routerLink: '/home',
+
+    },
 
         {
+
             label:'Orçamento',
             icon:'pi pi-fw pi-calculator',
             items:[
                 {
-                    label:'Left',
-                    icon:'pi pi-fw pi-align-left'
+                    label:'Em Andamento',
+                    icon:'pi pi-fw pi-thumbs-up'
                 },
                 {
-                    label:'Right',
-                    icon:'pi pi-fw pi-align-right'
+                    label:'Fechados',
+                    icon:'pi pi-fw pi-thumbs-up-fill'
                 },
                 {
-                    label:'Center',
-                    icon:'pi pi-fw pi-align-center'
+                    label:'Concluido',
+                    icon:'pi pi-fw pi-dollar'
                 },
                 {
-                    label:'Justify',
-                    icon:'pi pi-fw pi-align-justify'
+                    label:'Cancelados',
+                    icon:'pi pi-fw pi-thumbs-down-fill'
                 },
 
             ]
@@ -41,35 +48,16 @@ export class MenuComponent implements OnInit {
             icon:'pi pi-fw pi-user',
             items:[
                 {
-                    label:'New',
+                    label:'Novo',
                     icon:'pi pi-fw pi-user-plus',
 
                 },
                 {
-                    label:'Delete',
-                    icon:'pi pi-fw pi-user-minus',
+                    label:'Lista',
+                    icon:'pi pi-fw pi-book',
 
                 },
-                {
-                    label:'Search',
-                    icon:'pi pi-fw pi-users',
-                    items:[
-                    {
-                        label:'Filter',
-                        icon:'pi pi-fw pi-filter',
-                        items:[
-                            {
-                                label:'Print',
-                                icon:'pi pi-fw pi-print'
-                            }
-                        ]
-                    },
-                    {
-                        icon:'pi pi-fw pi-bars',
-                        label:'List'
-                    }
-                    ]
-                }
+
             ]
         },
         {
@@ -78,30 +66,42 @@ export class MenuComponent implements OnInit {
 
             items:[
                 {
-                    label:'Edit',
-                    icon:'pi pi-fw pi-pencil',
-                    items:[
-                    {
-                        label:'Save',
-                        icon:'pi pi-fw pi-calendar-plus'
-                    },
-                    {
-                        label:'Delete',
-                        icon:'pi pi-fw pi-calendar-minus'
-                    },
+                    label:'Acompanhamento',
+                    icon:'pi pi-fw pi-chart-pie',
+                    routerLink: '/acompanhamento',
 
-                    ]
                 },
                 {
-                    label:'Configuração',
-                    icon:'pi pi-fw pi-calendar-times',
-                    items:[
-                    {
-                        label:'Remove',
-                        icon:'pi pi-fw pi-calendar-minus'
-                    }
-                    ]
-                }
+                    label:'Bebidas',
+                    icon:'pi pi-fw pi-filter-fill',
+                    routerLink: '/bebidas',
+                },
+                {
+                    label:'Carnes',
+                    icon:'pi pi-fw pi-image',
+                    routerLink: '/carnes',
+                },
+                {
+                    label:'Consumo por Pessoa',
+                    icon:'pi pi-fw pi-chart-bar',
+                    routerLink: '/consumo-pessoa',
+                },
+                {
+                  label:'Tipo Acompanhamento',
+                  icon:'pi pi-fw pi-reddit',
+                  routerLink: '/tipo-acompanhamento',
+
+              },
+              {
+                  label:'Tipo de Corte',
+                  icon:'pi pi-fw pi-pencil',
+                  routerLink: '/tipo-corte',
+              },
+              {
+                  label:'Unidade',
+                  icon:'pi pi-fw pi-eye',
+                  routerLink: '/unidade',
+              }
             ]
         },
 
