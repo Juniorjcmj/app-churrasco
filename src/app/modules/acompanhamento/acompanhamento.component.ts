@@ -52,19 +52,20 @@ deleteSelectedacompanhamentos() {
     }
 
     editacompanhamento(acompanhamento: Acompanhamento) {
+      console.log(acompanhamento)
         this.acompanhamento = {...acompanhamento};
         this.acompanhamentoDialog = true;
     }
 
     deleteacompanhamento(acompanhamento: Acompanhamento) {
         this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + acompanhamento.descricao + '?',
+            message: 'Tem certeza que deseja excluir ' + acompanhamento.descricao + '?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.acompanhamentos = this.acompanhamentos.filter(val => val.id !== acompanhamento.id);
                 this.acompanhamento = {id:'', descricao: '', kg: '',tipoAcompanhamento: '', valorUn:'',valorTotal:''};
-                this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Deleted', life: 3000});
+                this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Excluido', life: 3000});
             }
         });
     }
@@ -115,6 +116,8 @@ deleteSelectedacompanhamentos() {
       }
       return id;
   }
+
+
 
 
 

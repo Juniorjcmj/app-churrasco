@@ -4,6 +4,8 @@ import { AcompanhamentoComponent } from './acompanhamento.component';
 import { AcompanhamentoRoutingModule } from './acompanhamento-routing.module';
 import { AcompanhamentoFormComponent } from './acompanhamento-form/acompanhamento-form.component';
 import { PrimeNGModule } from '../../share/primeng.module';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -15,7 +17,9 @@ import { PrimeNGModule } from '../../share/primeng.module';
   imports: [
     CommonModule,
     AcompanhamentoRoutingModule,
-    PrimeNGModule
+    FormsModule,
+    PrimeNGModule,
+
   ]
 })
 export class AcompanhamentoModule { }

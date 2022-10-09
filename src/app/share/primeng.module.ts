@@ -12,8 +12,11 @@ import {DropdownModule} from 'primeng/dropdown';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
+
 
   ],
   imports: [
@@ -33,7 +36,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     DropdownModule,
     RadioButtonModule,
     InputNumberModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    InputTextModule
 
   ]
 })

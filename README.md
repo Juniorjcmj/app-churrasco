@@ -7,7 +7,8 @@ ng build --configuration production
 Entra na pasta dist e esecuta o comando abaixo:
 npx serve
 # Site so framework css
-https://semantic-ui.com/introduction/getting-started.html
+https://www.primefaces.org/primeflex/justifycontent
+https://www.primefaces.org/primeng/carousel
 
 # Bizu HttpClientJsonModule 
 faz chamadas sem bloqueio de cors

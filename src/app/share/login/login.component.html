@@ -1,0 +1,27 @@
+<div class="main-content ">
+
+                  <div class="container text-center">
+                         <img class="img-fluid" style="width: 100px;" src="/assets/login.jpg" alt="">
+                  </div>
+
+                  <!-- criando formulario -->
+                  <form (ngSubmit)="onSubmit()" class="container">
+
+                         <div grid class="formgrid grid flex-container" >
+                              <span>Username*</span>
+                              <input  type="text" pInputText [(ngModel)] = "credentials.username" name="username" required/>
+                         </div>
+                         <div grid class="formgrid grid flex-container">
+                          <span>Password*</span>
+                          <input pInputText [(ngModel)] = "credentials.password"name="password" required type="password" matInput />
+                     </div>
+                     <div class="formgrid grid flex-container">
+                          <button  pButton pRipple class="p-button-secondary  p-button-sm" type="submit" >Login</button>
+
+                     </div>
+                  </form>
+
+
+  </div>
+
+
