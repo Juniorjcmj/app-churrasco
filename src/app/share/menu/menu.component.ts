@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api/menuitem';
-
+import {KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -10,7 +10,7 @@ export class MenuComponent  {
 
   items: MenuItem[];
 
-  constructor() {
+  constructor(private keycloakService: KeycloakService) {
     this.items = [
       {
         label:'Home',
@@ -106,6 +106,10 @@ export class MenuComponent  {
         },
 
     ];
+}
+logout(){
+  this.keycloakService.clearToken();
+  this.keycloakService.logout("http://localhost:4200/")
 }
 
 }

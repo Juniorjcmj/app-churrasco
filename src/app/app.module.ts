@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,18 +23,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './share/login/login.component';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+
+import { AuthGuard } from './guards/auth.guard';
+import {KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+
+
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
-        url: 'http://localhost:8180',
+        url: 'http://localhost:8180/',
         realm: 'quarkus',
-        clientId: 'backend-service'
+        clientId: 'churrasco'
       },
       initOptions: {
-        onLoad: 'check-sso',
+        onLoad: 'login-required',
+       // flow:"standard"
         silentCheckSsoRedirectUri:
           window.location.origin + '/assets/silent-check-sso.html'
       }
@@ -71,9 +76,18 @@ function initializeKeycloak(keycloak: KeycloakService) {
     MenubarModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    KeycloakAngularModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    },
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
