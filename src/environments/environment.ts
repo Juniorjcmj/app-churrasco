@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrlAuthenticationServer: 'http://localhost:8180/',
+ // apiUrlAuthenticationServer: 'http://localhost:8180/',
   apiUrlResourceServer: 'http://localhost:8080/'
 };
 
