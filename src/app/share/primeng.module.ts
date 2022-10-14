@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ButtonModule} from 'primeng/button'
 import {MenubarModule} from 'primeng/menubar';
@@ -14,13 +14,21 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { LoginComponent } from './login/login.component';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
+
+interface NgxSpinnerConfig {
+  type?: string;
+}
+
+
 @NgModule({
   declarations: [
-
-
   ],
   imports: [
     CommonModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
 
 
   ],
@@ -37,8 +45,13 @@ import { LoginComponent } from './login/login.component';
     RadioButtonModule,
     InputNumberModule,
     ConfirmDialogModule,
-    InputTextModule
+    InputTextModule,
+    ProgressSpinnerModule,
 
-  ]
+
+    NgxSpinnerModule
+
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PrimeNGModule { }

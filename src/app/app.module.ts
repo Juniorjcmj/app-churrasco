@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './share/login/login.component';
 
+
 import { AuthGuard } from './guards/auth.guard';
 import {KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
@@ -78,6 +79,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     FormsModule,
     BrowserAnimationsModule,
     KeycloakAngularModule,
+
 
   ],
   providers: [

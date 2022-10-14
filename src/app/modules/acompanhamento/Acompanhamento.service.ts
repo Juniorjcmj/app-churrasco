@@ -3,6 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { KeycloakService } from 'keycloak-angular';
+import { Acompanhamento } from './acompanhamento';
 
 
 @Injectable({
@@ -17,7 +18,7 @@ export class AcompanhamentoService {
 
 
     getAll(){
-      return this.httpClient.get(`${this.apiUrlResourceServe}`)
+      return this.httpClient.get<Acompanhamento[]>(`${this.apiUrlResourceServe}`)
     }
 
 
