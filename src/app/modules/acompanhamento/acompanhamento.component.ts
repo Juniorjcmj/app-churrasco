@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { Acompanhamento } from './acompanhamento';
-import { AcompanhamentoService } from './acompanhamento.service';
+import { AcompanhamentoService } from './Acompanhamento.service';
+import { TipoAcompanhamento } from '../tipo-acompanhamento/tipoAcompanhamento';
+
 
 
 @Component({
@@ -26,18 +28,23 @@ export class AcompanhamentoComponent implements OnInit {
 
   statuses!: any[];
 
-  constructor( private messageService: MessageService, private confirmationService: ConfirmationService, private serviceResurce: AcompanhamentoService ){
+  constructor( private messageService: MessageService,
+    private confirmationService: ConfirmationService,
+     private serviceResurce: AcompanhamentoService ){
 
   //  this.acompanhamentos = [{id:'1', descricao: 'Salada', kg: '2,6',tipoAcompanhamento: 'Vegano', valorUn:'2,7',valorTotal:'15,99'},
   //                           { id:'2', descricao: 'Canjiquinha', kg: '8',tipoAcompanhamento: 'Doce', valorUn:'1,4',valorTotal:'13,7'}]
 
-                            this.serviceResurce.getAll().subscribe(
-                              (data: any) => {
-                                console.log(data)
-                                this.acompanhamentos = data;
-                              }
-
-                            )
+  this.serviceResurce.getAll().subscribe(
+    (data: any) => {
+      this.acompanhamentos = data;
+    }
+  )
+  this.serviceResurce.getAllTipo().subscribe(
+    (data: any) => {
+      this.statuses = data;
+    }
+  )
 
    }
 

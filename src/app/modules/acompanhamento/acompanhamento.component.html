@@ -81,10 +81,11 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
   </div>
       <div class="field">
           <label for="tipo">Tipo de Acompanhamento</label>
-          <p-dropdown inputId="tipo" [options]="statuses" placeholder="Select">
-              <ng-template let-option pTemplate="item">
-                  <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
-              </ng-template>
+          <p-dropdown inputId="tipo"
+          [options]="statuses" placeholder="Selecione"
+          [(ngModel)]="acompanhamento.tipoAcompanhamento"
+          optionValue="descricao"
+          optionLabel="descricao">
           </p-dropdown>
       </div>
 
