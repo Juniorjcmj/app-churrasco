@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import { Acompanhamento } from './acompanhamento';
+import { AcompanhamentoDto } from './acompanhamento';
 import { AcompanhamentoService } from './Acompanhamento.service';
 import { TipoAcompanhamento } from '../tipo-acompanhamento/tipoAcompanhamento';
 import { catchError, delay, Observable, of, tap } from 'rxjs';
@@ -20,11 +20,11 @@ export class AcompanhamentoComponent implements OnInit {
 
   acompanhamentoDialog!: boolean;
 
-  acompanhamentos$: Observable<Acompanhamento[]>;
+  acompanhamentos$: Observable<AcompanhamentoDto[]>;
 
-  acompanhamento!: Acompanhamento;
+  acompanhamento!: AcompanhamentoDto;
 
-  selectedAcompanhamento!: Acompanhamento[];
+  selectedAcompanhamento!: AcompanhamentoDto[];
 
   submitted!: boolean;
 
@@ -79,13 +79,13 @@ deleteSelectedacompanhamentos() {
         });
     }
 
-    editacompanhamento(acompanhamento: Acompanhamento) {
+    editacompanhamento(acompanhamento: AcompanhamentoDto) {
       console.log(acompanhamento)
         this.acompanhamento = {...acompanhamento};
         this.acompanhamentoDialog = true;
     }
 
-    deleteacompanhamento(acompanhamento: Acompanhamento) {
+    deleteacompanhamento(acompanhamento: AcompanhamentoDto) {
         this.confirmationService.confirm({
             message: 'Tem certeza que deseja excluir ' + acompanhamento.descricao + '?',
             header: 'Confirm',
@@ -104,24 +104,20 @@ deleteSelectedacompanhamentos() {
     }
 
     saveacompanhamento() {
+      this.acompanhamentoDialog = false;
       this.submitted = true;
 
-      if (this.acompanhamento.descricao.trim()) {
-          if (this.acompanhamento.id) {
-            //  this.acompanhamentos[this.findIndexById(this.acompanhamento.id)] = this.acompanhamento;
-              this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Updated', life: 3000});
-          }
-          else {
-              this.acompanhamento.id = this.createId();
-            //  this.acompanhamento.image = 'acompanhamento-placeholder.svg';
-          //    this.acompanhamentos.push(this.acompanhamento);
-              this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Created', life: 3000});
-          }
-
-         // this.acompanhamentos = [...this.acompanhamentos];
-          this.acompanhamentoDialog = false;
-          this.acompanhamento = {id:'', descricao: '', kg: '',tipoAcompanhamento: '', valorUn:'',valorTotal:''};
-      }
+      this.serviceResurce.manterAcompanhamento(this.acompanhamento).subscribe
+      (
+       success =>{
+        this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Salvo', life: 3000});
+       },
+          error => {
+            console.log(error)
+           this.messageService.add({severity:'error', summary: 'Error', detail: 'Error', life: 3000});
+          return '';
+    }
+      )
   }
 
   findIndexById(id: string): number {

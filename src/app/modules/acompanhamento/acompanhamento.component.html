@@ -96,14 +96,14 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
               <label for="valorUn">Valor Unitário</label>
               <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">R$</span>
-              <p-inputNumber id="valorUn" mode="currency"[(ngModel)]="acompanhamento.valorUn" currency="BRL" locale="pt-BR"></p-inputNumber>
+              <input pInputText type="text"  id="valorUn" [(ngModel)]="acompanhamento.valorUn" />
               </div>
             </div>
           <div class="field col">
             <label for="valorTotal">Valor Total</label>
             <div class="p-inputgroup">
               <span class="p-inputgroup-addon">R$</span>
-            <p-inputNumber id="valorTotal" mode="currency" [(ngModel)]="acompanhamento.valorTotal" currency="BRL" locale="pt-BR"></p-inputNumber>
+            <input  pInputText type="text" id="valorTotal"  [(ngModel)]="acompanhamento.valorTotal" />
         </div>
         </div>
       </div>

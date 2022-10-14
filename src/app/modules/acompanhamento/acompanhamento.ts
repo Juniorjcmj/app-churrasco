@@ -1,5 +1,5 @@
 
-export interface Acompanhamento{
+export interface AcompanhamentoDto{
 
   id:	string
   descricao:	string

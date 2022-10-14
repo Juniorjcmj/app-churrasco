@@ -3,7 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { KeycloakService } from 'keycloak-angular';
-import { Acompanhamento } from './acompanhamento';
+import { AcompanhamentoDto } from './acompanhamento';
 
 
 @Injectable({
@@ -18,7 +18,12 @@ export class AcompanhamentoService {
 
 
     getAll(){
-      return this.httpClient.get<Acompanhamento[]>(`${this.apiUrlResourceServe}`)
+      return this.httpClient.get<AcompanhamentoDto[]>(`${this.apiUrlResourceServe}`)
+    }
+
+    manterAcompanhamento(record: AcompanhamentoDto){
+      console.log(record)
+      return  this.httpClient.post<AcompanhamentoDto>(`${this.apiUrlResourceServe}`, record).pipe();
     }
 
 
