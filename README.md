@@ -30,3 +30,6 @@ asdf list-all nodejs    => mostra todas as versões do nodejs instalada
 asdf install nodejs 16.17.0    => instala a versão 16.17.0 
 asdf global nodejs 17.17.0     => seta a versão 16.17.0 como a atual
 
+#Implementação correta do currency
+https://consolelog.com.br/formatar-valor-moeda-em-angular-2-currencypipe/
+
