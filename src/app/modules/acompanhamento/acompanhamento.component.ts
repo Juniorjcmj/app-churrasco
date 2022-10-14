@@ -66,6 +66,14 @@ export class AcompanhamentoComponent implements OnInit {
     this.submitted = false;
     this.acompanhamentoDialog = true;
 }
+
+   obterAcompanhamentos(){
+
+    this.acompanhamentos$ = this.serviceResurce.getAll()
+    .pipe()
+   }
+
+
 deleteSelectedacompanhamentos() {
         this.confirmationService.confirm({
             message: 'Are you sure you want to delete the selected acompanhamentos?',
@@ -110,7 +118,12 @@ deleteSelectedacompanhamentos() {
       this.serviceResurce.manterAcompanhamento(this.acompanhamento).subscribe
       (
        success =>{
-        this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Salvo', life: 3000});
+        this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Salvo', life: 2000});
+        setTimeout(() => {
+          this.obterAcompanhamentos()
+        }, 2000);
+
+
        },
           error => {
 
@@ -142,7 +155,12 @@ deleteSelectedacompanhamentos() {
   }
 
 
+  onReload(){
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
 
+   }
 
 
 }
