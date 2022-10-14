@@ -80,7 +80,7 @@ deleteSelectedacompanhamentos() {
     }
 
     editacompanhamento(acompanhamento: AcompanhamentoDto) {
-      console.log(acompanhamento)
+
         this.acompanhamento = {...acompanhamento};
         this.acompanhamentoDialog = true;
     }
@@ -113,7 +113,7 @@ deleteSelectedacompanhamentos() {
         this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Salvo', life: 3000});
        },
           error => {
-            console.log(error)
+
            this.messageService.add({severity:'error', summary: 'Error', detail: 'Error', life: 3000});
           return '';
     }

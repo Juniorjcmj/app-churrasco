@@ -22,7 +22,7 @@ export class AcompanhamentoService {
     }
 
     manterAcompanhamento(record: AcompanhamentoDto){
-      console.log(record)
+
       return  this.httpClient.post<AcompanhamentoDto>(`${this.apiUrlResourceServe}`, record).pipe();
     }
 
