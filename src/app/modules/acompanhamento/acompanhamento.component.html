@@ -50,8 +50,8 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
       <td>{{acompanhamento.kg}}</td>
       <td>{{acompanhamento.tipoAcompanhamento}}</td>
 
-      <td>{{acompanhamento.valorUn }}</td>
-      <td>{{acompanhamento.valorTotal }}</td>
+      <td>{{acompanhamento.valorUn  | currency  }}</td>
+      <td>{{acompanhamento.valorTotal  | currency }}</td>
       <td>
           <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editacompanhamento(acompanhamento)"></button>
           <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteacompanhamento(acompanhamento)"></button>

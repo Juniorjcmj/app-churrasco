@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import {DEFAULT_CURRENCY_CODE, LOCALE_ID, APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +28,10 @@ import { LoginComponent } from './share/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import {KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
 
+registerLocaleData(ptBr);
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -87,8 +90,12 @@ function initializeKeycloak(keycloak: KeycloakService) {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       multi: true,
-      deps: [KeycloakService]
+      deps: [KeycloakService],
     },
+
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+
     AuthGuard,
   ],
   bootstrap: [AppComponent]
