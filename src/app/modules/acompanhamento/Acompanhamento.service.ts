@@ -11,6 +11,8 @@ import { AcompanhamentoDto } from './acompanhamento';
 })
 export class AcompanhamentoService {
 
+
+
    apiUrlResourceServe= environment.apiUrlResourceServer+"V1/acompanhamento";
    apiUrlResourceServeTipo= environment.apiUrlResourceServer+"V1/tipo-acompanhamento";
 
@@ -22,8 +24,21 @@ export class AcompanhamentoService {
     }
 
     manterAcompanhamento(record: AcompanhamentoDto){
-
+       if(record.id.length < 1 ){
+          return  this.salvarAcompanhamento(record)
+       }else{
+          return this.alterarAcompanhamento(record)
+       }
+    }
+    salvarAcompanhamento(record: AcompanhamentoDto){
       return  this.httpClient.post<AcompanhamentoDto>(`${this.apiUrlResourceServe}`, record).pipe();
+    }
+    alterarAcompanhamento(record: AcompanhamentoDto){
+
+      return  this.httpClient.put<AcompanhamentoDto>(`${this.apiUrlResourceServe}`, record).pipe();
+    }
+    deleteAcompanhamento(record: string){
+      return  this.httpClient.delete<AcompanhamentoDto>(`${this.apiUrlResourceServe}`+"?id="+record ).pipe();
     }
 
 

@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { AcompanhamentoDto } from './acompanhamento';
 import { AcompanhamentoService } from './Acompanhamento.service';
-import { TipoAcompanhamento } from '../tipo-acompanhamento/tipoAcompanhamento';
+
 import { catchError, delay, Observable, of, tap } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -17,6 +19,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
   providers: [MessageService,ConfirmationService]
 })
 export class AcompanhamentoComponent implements OnInit {
+
+  @ViewChild('htmlData') htmlData!: ElementRef;
 
   acompanhamentoDialog!: boolean;
 
@@ -29,6 +33,8 @@ export class AcompanhamentoComponent implements OnInit {
   submitted!: boolean;
 
   statuses!: any[];
+
+  exportColumns: any[] = [];
 
   constructor( private messageService: MessageService,
     private confirmationService: ConfirmationService,
@@ -60,11 +66,17 @@ export class AcompanhamentoComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinner.show();
+
   }
   openNew() {
+
     this.acompanhamento = {id:'', descricao: '', kg: '',tipoAcompanhamento: '', valorUn:'',valorTotal:''};
     this.submitted = false;
     this.acompanhamentoDialog = true;
+}
+
+fabricarExel(event: any){
+   console.log("emitindo exel");
 }
 
    obterAcompanhamentos(){
@@ -75,6 +87,7 @@ export class AcompanhamentoComponent implements OnInit {
 
 
 deleteSelectedacompanhamentos() {
+
         this.confirmationService.confirm({
             message: 'Are you sure you want to delete the selected acompanhamentos?',
             header: 'Confirm',
@@ -93,15 +106,25 @@ deleteSelectedacompanhamentos() {
         this.acompanhamentoDialog = true;
     }
 
-    deleteacompanhamento(acompanhamento: AcompanhamentoDto) {
+    deleteacompanhamento(record: AcompanhamentoDto) {
         this.confirmationService.confirm({
-            message: 'Tem certeza que deseja excluir ' + acompanhamento.descricao + '?',
+            message: 'Tem certeza que deseja excluir ' + record.descricao + '?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
               //codigo para excluir
-                this.acompanhamento = {id:'', descricao: '', kg: '',tipoAcompanhamento: '', valorUn:'',valorTotal:''};
-                this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Excluido', life: 3000});
+              this.serviceResurce.deleteAcompanhamento(record.id).subscribe(
+                data => {
+                  this.messageService.add({severity:'success', summary: 'Successful', detail: 'acompanhamento Excluido', life: 2000});
+                  setTimeout(() => {
+                    this.obterAcompanhamentos()
+                  }, 2000);
+                },
+                error => {
+                  this.messageService.add({severity:'error', summary: 'Error', detail: 'Error', life: 3000});
+                }
+              )
+
             }
         });
     }
@@ -161,6 +184,19 @@ deleteSelectedacompanhamentos() {
     }, 2000);
 
    }
+
+   public exportPdf(): void {
+    let DATA: any = document.getElementById('htmlData');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('angular-demo.pdf');
+    });
+       }
 
 
 }

@@ -1,34 +1,13 @@
 
 
-<div class="card">
-  <div class="flex justify-content-center flex-wrap card-container yellow-container">
-      <div class="flex align-items-center justify-content-center ">
+  <p-toolbar styleClass="mb-4">
+    <ng-template pTemplate="left">
+        <button pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success  p-button-sm" ></button>
+       <!-- <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteacompanhamento()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
+    </ng-template>
 
-        <div class="card">
-          <h5>CADASTRO DE ACOMPANHAMENTO</h5>
-          <div class="field">
-              <label for="descricao">Descrição</label>
-              <input id="descricao" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-              <small id="descricao" class="p-error block">Descrição é obrigatória.</small>
-            </div>
-          <div class="field">
-              <label for="kg">KG</label>
-              <input id="kg" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-              <small id="kg" class="p-error block">Kg é obrigatório.</small>
-            </div>
-          <div class="field">
-            <label for="valorUnitario">Valor Unitário</label>
-            <input id="valorUnitario" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-            <small id="valorUnitario" class="p-error block">Valor Unitário é obrigatório.</small>
-          </div>
-        <div class="field">
-            <label for="lastname1">Valor Total</label>
-            <input id="lastname1" type="text"pInputText [disabled]="disabled" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-        </div>
-        <button pButton type="button" label="Guardar" ></button>
-        </div>
-
-      </div>
-
-  </div>
-</div>
+    <ng-template pTemplate="right">
+        <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block "></p-fileUpload>
+        <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-button-sm"></button>
+    </ng-template>
+</p-toolbar>

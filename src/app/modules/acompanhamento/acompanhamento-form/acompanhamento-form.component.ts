@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AcompanhamentoComponent } from '../acompanhamento.component';
+import { fromEvent, Observable } from 'rxjs';
+import { EventEmitterService } from '../event-emitter';
+import { AcompanhamentoService } from '../Acompanhamento.service';
 
 @Component({
   selector: 'app-acompanhamento-form',
@@ -7,10 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcompanhamentoFormComponent implements OnInit {
 
-  disabled: boolean = true;
-  constructor() { }
+ @ViewChild(AcompanhamentoComponent, { static: false })
+  teste!: AcompanhamentoComponent;
+
+  constructor(private serviceResurce: AcompanhamentoService) {
+
+  }
+
+
 
   ngOnInit(): void {
+
   }
 
 }
